@@ -51,8 +51,6 @@ class ThirdViewController: UIViewController {
                     }
                 }
             }
-            clearText()
-            sleep(1)
             tabBarController?.selectedIndex = 0
         }
     }
@@ -68,8 +66,6 @@ class ThirdViewController: UIViewController {
          }
          connection.close()
          }
-        clearText()
-        sleep(1)
         tabBarController?.selectedIndex = 0
     }
     
@@ -99,11 +95,16 @@ class ThirdViewController: UIViewController {
         getOwner(path: dbPath!, val: ownerNotificationID)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        clearText()
+    }
+    
     @objc func getNotificationID(notification : Notification)
     {
         let thisID = notification.userInfo?["id"] as? String
         ownerNotificationID = thisID!
-        NSLog("notification id: " + thisID!)
+        NSLog("owner notification id: " + thisID!)
     }
     
     func clearText()
@@ -183,8 +184,7 @@ class ThirdViewController: UIViewController {
             try! connection.executeUpdate(sql, values: val)
         }
         connection.close()
-        clearText()
-        sleep(1)
+
         tabBarController?.selectedIndex = 0
     }
     
@@ -197,21 +197,14 @@ class ThirdViewController: UIViewController {
             try! connection.executeUpdate(sql, values: val)
         }
         connection.close()
-        clearText()
-        sleep(1)
+
         tabBarController?.selectedIndex = 0
     }
-/*
-    func idNotification(_ notification : Notification)
-    {
-        ownerNotificationID = (notification.userInfo?["id"] as? String)!
-    }
-*/
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

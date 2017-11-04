@@ -193,6 +193,9 @@
                                 <color key="backgroundColor" red="0.75" green="0.063252531819999999" blue="0.10749579300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="catDeleteButton:" destination="q3w-l1-xcn" eventType="touchUpInside" id="g9h-Yz-Z2p"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17N-8I-jdX">
                                 <rect key="frame" x="227" y="64" width="69" height="21"/>

@@ -11,6 +11,7 @@ import UIKit
 extension Notification.Name
 {
     static let ownerID = Notification.Name("ownerID")
+    static let catID = Notification.Name("catID")
 }
 
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {

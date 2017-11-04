@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDataSource {
+class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var cats: [[String]] = []
     var dbPath : URL?
@@ -25,6 +25,18 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         cell.catIdLabel?.text = catID
         cell.catNameLabel.text = catName
         return cell //4.
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = indexPath.item
+        let selectedCatID = cats[selectedItem][0]
+        NSLog("Cat page selected id: " + selectedCatID)
+        
+        let CatDict: [String : String] = ["id" : selectedCatID]
+        NotificationCenter.default.post(name: .catID, object: nil, userInfo: CatDict)
+        
+        sleep(1)
+        tabBarController?.selectedIndex = 3
     }
     
 
@@ -47,7 +59,14 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         
         cats = catQuery(path: dbPath!)
         
+        catTableView.delegate = self
         catTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cats = catQuery(path: dbPath!)
+        catTableView.reloadData()
     }
     
     func catQuery(path: URL) -> [[String]]
@@ -56,6 +75,9 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         let connection = FMDatabase(path: path.absoluteString)
         var result = FMResultSet()
         var data : [[String]] = []
+        
+        data.append(["0", "No cat"])
+        
         if (connection.open())
         {
             result = try! connection.executeQuery(sql, values: nil)
