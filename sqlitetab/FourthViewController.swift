@@ -49,6 +49,7 @@ class FourthViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func catDeleteButton(_ sender: UIButton) {
         deleteCat(path: dbPath!, val: [catNotificationID])
+        tabBarController?.selectedIndex = 1
     }
     
     override func viewDidLoad() {
