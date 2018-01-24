@@ -2,8 +2,8 @@
 //  SecondViewController.swift
 //  sqlitetab
 //
-//  Created by Koulutus on 01/11/2017.
-//  Copyright © 2017 Koulutus. All rights reserved.
+//  Created by Tarmo Turunen on 01/11/2017.
+//  Copyright © 2017 Tarmo Turunen. All rights reserved.
 //
 
 import UIKit
